@@ -2,6 +2,7 @@ package com.catalin.facultate.locationtracker.controller;
 
 import com.catalin.facultate.locationtracker.model.Event;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -27,13 +28,17 @@ public class LinesController {
         return response;
     }
 
-//    @MessageMapping("/chat.addUser")
-//    @SendTo("/line/25")
-//    public Event addUser(@Payload Event chatMessage,
-//                               SimpMessageHeaderAccessor headerAccessor) {
-//        // Add username in web socket session
-//        headerAccessor.getSessionAttributes().put("username", chatMessage.getBusLine());
-//        return chatMessage;
-//    }
+    @MessageMapping("/new-coordinate/{line}")
+    @SendTo("/topic/line")
+    public Event sendMessageVariable(@DestinationVariable("line") String line, @Payload Event event) {
+        Event response = Event.builder()
+                .timestamp(Instant.now())
+                .busLine(line)
+                .build();
+
+        log.info("Sending {} back {}", response, line);
+
+        return response;
+    }
 
 }
