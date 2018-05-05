@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: location-tracker
+
+logging:
+  level:
+    com.catalin.facultate: DEBUG
+    org.hibernate: DEBUG
+    org.springframework.web: DEBUG
