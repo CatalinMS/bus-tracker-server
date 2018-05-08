@@ -18,7 +18,7 @@ public class BussRouteMapper {
         return BussRoute.builder()
                 .line(bussRouteDto.getLine())
                 .description(bussRouteDto.getDescription())
-                .bussStations(MapperUtils.convertList(bussRouteDto.getBussStations(), bussStationMapper::toEntity))
+                .bussStations(MapperUtils.convertList(bussRouteDto.getStations(), bussStationMapper::toEntity))
                 .build();
     }
 
@@ -26,7 +26,7 @@ public class BussRouteMapper {
         return BussRouteDto.builder()
                 .line(bussRoute.getLine())
                 .description(bussRoute.getDescription())
-                .bussStations(MapperUtils.convertList(bussRoute.getBussStations(), bussStationMapper::toDto))
+                .stations(MapperUtils.convertList(bussRoute.getBussStations(), bussStationMapper::toDto))
                 .build();
     }
 

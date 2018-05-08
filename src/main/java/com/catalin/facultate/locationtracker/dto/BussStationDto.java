@@ -18,8 +18,8 @@ public class BussStationDto {
 
     private String name;
 
-    private Double lat;
+    private Double latitude;
 
-    private Double lon;
+    private Double longitude;
 
 }

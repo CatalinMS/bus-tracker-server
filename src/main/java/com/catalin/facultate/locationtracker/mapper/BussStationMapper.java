@@ -16,14 +16,14 @@ public class BussStationMapper {
     }
 
     private GeoJsonPoint buildLocation(BussStationDto bussStationDto) {
-        return new GeoJsonPoint(bussStationDto.getLon(), bussStationDto.getLat());
+        return new GeoJsonPoint(bussStationDto.getLongitude(), bussStationDto.getLatitude());
     }
 
     public BussStationDto toDto(BussStation bussStation) {
         return BussStationDto.builder()
                 .name(bussStation.getName())
-                .lat(bussStation.getLocation().getY())
-                .lon(bussStation.getLocation().getX())
+                .latitude(bussStation.getLocation().getY())
+                .longitude(bussStation.getLocation().getX())
                 .build();
     }
 

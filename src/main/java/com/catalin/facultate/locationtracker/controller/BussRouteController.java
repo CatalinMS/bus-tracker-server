@@ -18,13 +18,18 @@ public class BussRouteController {
     }
 
     @GetMapping
-    Flux<BussRoute> findAll() {
+    Flux<BussRouteDto> findAll() {
         return bussRouteService.findAll();
     }
 
     @PostMapping
     Mono<BussRouteDto> save(@RequestBody BussRouteDto bussRoute) {
         return bussRouteService.save(bussRoute);
+    }
+
+    @GetMapping("/lineId")
+    Mono<BussRouteDto> findOne(@PathVariable String lineId) {
+        return bussRouteService.findOne(lineId);
     }
 
 }

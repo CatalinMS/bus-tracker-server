@@ -21,6 +21,6 @@ public class BussRouteDto {
 
     private String description;
 
-    private List<BussStationDto> bussStations;
+    private List<BussStationDto> stations;
 
 }

@@ -19,8 +19,14 @@ public class BussRouteService {
         this.bussRouteRepository = bussRouteRepository;
     }
 
-    public Flux<BussRoute> findAll() {
-        return bussRouteRepository.findAll();
+    public Flux<BussRouteDto> findAll() {
+        return bussRouteRepository.findAll()
+                .map(bussRouteMapper::toDto);
+    }
+
+    public Mono<BussRouteDto> findOne(String line) {
+        return bussRouteRepository.findById(line)
+                .map(bussRouteMapper::toDto);
     }
 
     public Mono<BussRouteDto> save(BussRouteDto bussRouteDto) {
