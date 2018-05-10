@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @Service
 public class BussRouteService {
 
@@ -36,4 +38,9 @@ public class BussRouteService {
                 .map(bussRouteMapper::toDto);
     }
 
+    public Mono<List<String>> getLineNumbers() {
+        return bussRouteRepository.findAll()
+                .map(BussRoute::getLine)
+                .collectList();
+    }
 }

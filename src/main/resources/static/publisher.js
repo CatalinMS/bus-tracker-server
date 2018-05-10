@@ -35,7 +35,7 @@ function disconnect() {
 
 function sendName() {
     setInterval(function(){
-    stompClient.send("/app/new-coordinate/" + $("#name").val(), {}, JSON.stringify({'busLine': $("#name").val()}));
+    stompClient.send("/app/new-coordinate/" + $("#name").val(), {}, JSON.stringify({'line': $("#name").val()}));
     }, 1000);
 
 }

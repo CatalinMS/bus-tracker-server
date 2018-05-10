@@ -15,24 +15,11 @@ import java.time.Instant;
 @Controller
 public class BussLocationWebSocketHandler {
 
-    @MessageMapping("/new-coordinate")
-    @SendTo("/topic/line")
-    public Event sendMessage(@Payload Event event) {
-        Event response = Event.builder()
-                .timestamp(Instant.now())
-                .busLine(event.getBusLine())
-                .build();
-
-        log.info("no var Sending back {}", response);
-
-        return response;
-    }
-
-    @MessageMapping("/new-coordinate/{line}")
-    @SendTo("/topic/line")
-    public BussLocationDto sendMessageVariable(@DestinationVariable("line") String line,
+    @MessageMapping("/new-coordinate/{lineId}")
+    @SendTo("/topic/line.{lineId}")
+    public BussLocationDto sendMessageVariable(@DestinationVariable("lineId") String lineId,
                                                @Payload BussLocationDto bussLocationDto) {
-        log.info("var Sending {} back {}", bussLocationDto, line);
+        log.info("var Sending {} back {}", bussLocationDto, lineId);
 
         return bussLocationDto;
     }
