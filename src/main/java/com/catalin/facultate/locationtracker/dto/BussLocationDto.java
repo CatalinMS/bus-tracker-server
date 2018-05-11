@@ -17,6 +17,6 @@ public class BussLocationDto {
 
     private String line;
 
-    private CoordinateDto coordinate;
+    private CoordinateDto coordinates;
 
 }
