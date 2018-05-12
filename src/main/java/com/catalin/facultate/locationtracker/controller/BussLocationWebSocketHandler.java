@@ -1,15 +1,12 @@
 package com.catalin.facultate.locationtracker.controller;
 
 import com.catalin.facultate.locationtracker.dto.BussLocationDto;
-import com.catalin.facultate.locationtracker.model.Event;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-
-import java.time.Instant;
 
 @Slf4j
 @Controller
