@@ -16,7 +16,7 @@ public class BussLocationWebSocketHandler {
     @SendTo("/topic/line.{lineId}")
     public BussLocationDto sendMessageVariable(@DestinationVariable("lineId") String lineId,
                                                @Payload BussLocationDto bussLocationDto) {
-        log.info("var Sending {} back {}", bussLocationDto, lineId);
+        log.info("Received location {} for line {}", bussLocationDto, lineId);
 
         return bussLocationDto;
     }
